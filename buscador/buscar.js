@@ -3,13 +3,12 @@ const fs = require("fs");
 
 const res = [];
 
-const mostrar = (country = "ECU", year = 1960, path = "./datos.csv") => {
+const mostrar = (country , year , path = "./datos.csv") => {
   return new Promise((resolve, reject) => {
     if (!Number(year)) {
       reject(`${year} no es valido`);
       return;
     }
-    let saveData = "";
     fs.createReadStream(path)
       .pipe(csv({}))
       .on("data", (data) => {
@@ -19,6 +18,7 @@ const mostrar = (country = "ECU", year = 1960, path = "./datos.csv") => {
         for (let i = 0; i < res.length; i++) {
           if (res[i]["Country Code"] === country) {
             data = res[i];
+            console.log(data['"Country Name"']);
             console.log( `Datos: ${data["Indicator Name"]}
                          Pais: ${data["Country Name"]}
                          Año: ${year}
@@ -33,5 +33,5 @@ const mostrar = (country = "ECU", year = 1960, path = "./datos.csv") => {
 
 module.exports = {
   mostrar,
-  guardar,
+//   guardar,
 };
