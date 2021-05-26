@@ -16,3 +16,9 @@ npm i
 ~~~
 node app.js mostrar --country ECU --year 2005
 ~~~
+
+#### Ejemplo comando mostrar
+~~~
+node app.js guardar --year 2004 --country USA
+~~~
+
